@@ -1,24 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+
+import useLocalStorage from "react-use-localstorage";
+
+import "./App.css";
 
 function App() {
+  const [name, setName] = useLocalStorage("name");
+  const [age, setAge] = useLocalStorage("age");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Set Name to store in Local Storage</h1>
+      <div>
+        <label>
+          Name:{" "}
+          <input
+            type="text"
+            placeholder="Enter your name"
+            value={name}
+            onChange={e => setName(e.target.value)}
+          />
+        </label>
+      </div>
+      <div>
+        <label>
+          Age:{" "}
+          <input
+            type="number"
+            placeholder="Enter your age"
+            value={age}
+            onChange={e => setAge(e.target.value)}
+          />
+        </label>
+      </div>
     </div>
   );
 }
